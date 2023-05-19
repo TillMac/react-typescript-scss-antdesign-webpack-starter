@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+// const { EsbuildPlugin } = require('esbuild-loader');
 
 module.exports = {
 	entry: './src/index.tsx',
@@ -15,7 +16,11 @@ module.exports = {
 				test: /\.(ts|tsx)$/,
 				exclude: /node_modules/,
 				use: {
-					loader: 'babel-loader',
+					loader: 'esbuild-loader',
+					options: {
+						tsconfig: './tsconfig.json',
+						target: 'es2015',
+					},
 				},
 			},
 			{
@@ -69,4 +74,11 @@ module.exports = {
 		},
 		extensions: ['.ts', '.tsx', '.js'],
 	},
+	// optimization: {
+	// 	minimizer: [
+	// 		new EsbuildPlugin({
+	// 			target: 'es2015', // Syntax to compile to (see options below for possible values)
+	// 		}),
+	// 	],
+	// },
 };
