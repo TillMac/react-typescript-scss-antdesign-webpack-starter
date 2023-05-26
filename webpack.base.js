@@ -6,8 +6,9 @@ module.exports = {
 	entry: './src/index.tsx',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.[contenthash].js',
+		filename: 'bundle.js',
 		clean: true,
+		publicPath: '/',
 	},
 	module: {
 		rules: [
@@ -58,13 +59,14 @@ module.exports = {
 			emitError: false,
 			// ESLint 檢查的目錄
 			files: 'src',
-			cache: true,
+			cache: false,
 			threads: true,
 		}),
 	],
 	resolve: {
 		roots: [path.resolve(__dirname)],
 		alias: {
+			'@src': path.resolve(__dirname, 'src/'),
 			'@assets': path.resolve(__dirname, 'src/assets/'),
 			'@components': path.resolve(__dirname, 'src/components/'),
 			'@pages': path.resolve(__dirname, 'src/pages/'),
