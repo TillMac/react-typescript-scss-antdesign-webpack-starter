@@ -58,7 +58,7 @@ module.exports = {
 			emitError: false,
 			// ESLint 檢查的目錄
 			files: 'src',
-			cache: true,
+			cache: false,
 			threads: true,
 		}),
 	],
