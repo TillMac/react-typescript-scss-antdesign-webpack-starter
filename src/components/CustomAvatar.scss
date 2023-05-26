@@ -1,0 +1,12 @@
+.avatar {
+	&__wrapper {
+		display: block;
+		border-radius: 50%;
+		margin-top: auto;
+		margin-bottom: auto;
+	}
+	&__img {
+		display: block;
+		width: 100%;
+	}
+}

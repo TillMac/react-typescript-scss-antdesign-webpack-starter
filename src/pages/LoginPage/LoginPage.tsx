@@ -1,10 +1,20 @@
-import { Button, Card, Form, Input, Space } from 'antd';
-import React from 'react';
+import { Button, Card, Form, Input } from 'antd';
+import React, { useContext, useEffect } from 'react';
 import './LoginPage.scss';
+import AuthContext from '../../AuthContext';
 import logoBanner from '@assets/images/beseye_logo_banner.jpeg';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
 	const [form] = Form.useForm();
+	const authContext = useContext(AuthContext);
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (authContext.isLoggedIn) {
+			navigate('/home');
+		}
+	}, [authContext.isLoggedIn]);
 
 	return (
 		<div className="card-wrapper">
@@ -35,8 +45,9 @@ const LoginPage = () => {
 						type="primary"
 						htmlType="submit"
 						style={{ display: 'block', marginLeft: 'auto', marginRight: 0 }}
+						onClick={() => authContext.onLogin()}
 					>
-						Submit
+						LogIn
 					</Button>
 				</Form>
 			</Card>
