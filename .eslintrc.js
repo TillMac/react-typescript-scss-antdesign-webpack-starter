@@ -30,5 +30,7 @@ module.exports = {
 		'no-console': 'warn',
 		'no-undef': 'off',
 		'prettier/prettier': 'error',
+		'@typescript-eslint/no-explicit-any': ['off'],
+		'react/prop-types': 'off',
 	},
 };
